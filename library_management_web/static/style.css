@@ -1,0 +1,12 @@
+body {
+    background-color: #f4f7fb;
+}
+
+.card {
+    border: 0;
+    border-radius: 12px;
+}
+
+.table thead th {
+    vertical-align: middle;
+}

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: library-management-web
+    env: python
+    plan: free
+    rootDir: library_management_web
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DB_PATH
+        value: /data/library.db
+    disk:
+      name: library-data
+      mountPath: /data
+      sizeGB: 1

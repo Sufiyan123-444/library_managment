@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Issue Book</h3>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <form method="post" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Select Student</label>
+                <select class="form-select" name="student_id" required>
+                    <option value="">Choose Student</option>
+                    {% for s in students %}
+                    <option value="{{ s['student_id'] }}">{{ s['student_id'] }} - {{ s['name'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Select Book</label>
+                <select class="form-select" name="book_id" required>
+                    <option value="">Choose Book</option>
+                    {% for b in books %}
+                    <option value="{{ b['book_id'] }}">{{ b['book_id'] }} - {{ b['title'] }} (Qty: {{ b['quantity'] }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Issue Date</label>
+                <input class="form-control" type="date" name="issue_date" value="{{ default_date }}" required>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-info text-white" type="submit">Issue Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="alert alert-secondary">
+    To return issued books, open the <a href="{{ url_for('return_page') }}">Return Book page</a>.
+</div>
+{% endblock %}
