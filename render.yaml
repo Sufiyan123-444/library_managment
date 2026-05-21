@@ -10,8 +10,4 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: DB_PATH
-        value: /data/library.db
-    disk:
-      name: library-data
-      mountPath: /data
-      sizeGB: 1
+        value: library_management_web/library.db
